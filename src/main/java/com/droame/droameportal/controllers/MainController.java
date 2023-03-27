@@ -2,6 +2,7 @@ package com.droame.droameportal.controllers;
 
 import com.droame.droameportal.models.Booking;
 import com.droame.droameportal.models.Customer;
+import com.droame.droameportal.models.Location;
 import com.droame.droameportal.services.IBookingService;
 import com.droame.droameportal.services.ICustomerService;
 import com.droame.droameportal.services.IDroneShotService;
@@ -75,6 +76,17 @@ public class MainController {
     @PostMapping("/saveCustomer")
     public String saveCustomer(@ModelAttribute Customer customer) {
         customerService.saveCustomer(customer);
+        return "redirect:operator";
+    }
+
+    @GetMapping("/addLocation")
+    public String addLocationPage() {
+        return "AddLocation";
+    }
+
+    @PostMapping("/saveLocation")
+    public String saveLocation(@ModelAttribute Location location) {
+        locationService.saveLoc(location);
         return "redirect:operator";
     }
 }
