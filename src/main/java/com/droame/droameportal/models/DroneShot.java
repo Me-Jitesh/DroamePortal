@@ -11,4 +11,6 @@ public class DroneShot {
     @Id
     @GeneratedValue
     private Integer shotId;
+    private String droneShotName;
+    private String droneShotPath;
 }
