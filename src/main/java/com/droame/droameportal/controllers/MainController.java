@@ -1,6 +1,7 @@
 package com.droame.droameportal.controllers;
 
 import com.droame.droameportal.models.Booking;
+import com.droame.droameportal.models.Customer;
 import com.droame.droameportal.services.IBookingService;
 import com.droame.droameportal.services.ICustomerService;
 import com.droame.droameportal.services.IDroneShotService;
@@ -63,6 +64,17 @@ public class MainController {
     @GetMapping("/deleteBooking")
     public String deleteBooking(@RequestParam Integer bookingId) {
         bookingService.deleteBooking(bookingId);
+        return "redirect:operator";
+    }
+
+    @GetMapping("/addCustomer")
+    public String addCustomerPage() {
+        return "AddCustomer";
+    }
+
+    @PostMapping("/saveCustomer")
+    public String saveCustomer(@ModelAttribute Customer customer) {
+        customerService.saveCustomer(customer);
         return "redirect:operator";
     }
 }
