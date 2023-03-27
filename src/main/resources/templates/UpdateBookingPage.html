@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Booking Register</title>
+    <title>Edit Booking</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -21,17 +21,28 @@
     <div class="card">
 
         <div class="card-header bg-primary text-white text-center">
-            <h3>ADD BOOKING</h3>
+            <h3>EDIT BOOKING</h3>
         </div>
 
         <div class="card-body">
-            <form method="post" th:action="@{/droam/saveBooking}">
+            <form method="post" th:action="@{/droam/updateBooking}" th:object="${booking}">
+
+                <div class="row">
+                    <div class="col-6">
+                        <label for="id">ID</label>
+                    </div>
+                    <div class="col-6">
+                        <input class="form-control" id="id" th:field="*{bookingId}" type="text" readonly/>
+                    </div>
+                </div>
+                <!--  Row #0 end -->
+
                 <div class="row">
                     <div class="col-6">
                         <label for="customer">CUSTOMER</label>
                     </div>
                     <div class="col-6">
-                        <select class="form-control" id="customer" name="customer.id">
+                        <select class="form-control" id="customer" name="customer.id" th:field="*{customer}">
                             <option th:each="ob:${custo}" th:text="ob.customerName" th:value="ob.customerId"></option>
                         </select>
                     </div>
@@ -42,7 +53,7 @@
                         <label for="loc">LOCATION</label>
                     </div>
                     <div class="col-6">
-                        <select class="form-control" id="loc" name="location.id">
+                        <select class="form-control" id="loc" name="location.id" th:field="*{location}">
                             <option th:each="ob:${loc}" th:text="ob.addrId" th:value="ob.addrLine"></option>
                         </select>
                     </div>
@@ -53,7 +64,7 @@
                         <label for="drone">DRONE SHOT</label>
                     </div>
                     <div class="col-6">
-                        <select class="form-control" id="drone" name="droneShot.id">
+                        <select class="form-control" id="drone" name="droneShot.id" th:field="*{droneShot}">
                             <option th:each="ob:${drone}" th:text="ob.shotId" th:value="ob.shotId"></option>
                         </select>
                     </div>
@@ -61,7 +72,7 @@
                 <!--row #3 end-->
 
                 <!-- Submit Button -->
-                <input class="btn btn-success" type="submit" value="ADD"/>
+                <input class="btn btn-success" type="submit" value="UPDATE"/>
             </form>
         </div>
         <div class="card-footer text-center bg-success text-white" th:if="${message != null}">
