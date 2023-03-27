@@ -14,14 +14,11 @@ public class Booking {
     @GeneratedValue
     @Column(name = "booking_id")
     private Integer bookingId;
-    @Column(name = "booking_customer")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Customer customer;
-    @Column(name = "booking_address")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Location location;
-    @OneToOne
-    @Column(name = "booking_shot")
+    @OneToOne(cascade = CascadeType.ALL)
     private DroneShot droneShot;
     @Column(name = "booking_time")
     @Temporal(TemporalType.TIMESTAMP)
