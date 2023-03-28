@@ -3,6 +3,7 @@ package com.droame.droameportal.services;
 import com.droame.droameportal.models.DroneShot;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IDroneShotService {
 
@@ -11,4 +12,6 @@ public interface IDroneShotService {
     DroneShot getShot(Integer shotId);
 
     List<DroneShot> getAllShot();
+
+    Map<Integer, String> getShortIdAndName();
 }

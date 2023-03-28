@@ -39,9 +39,7 @@ public class MainController {
 
     @GetMapping("/addBooking")
     public String addBookingPage(Model model) {
-        model.addAttribute("loc", locationService.getAllLoc());
-        model.addAttribute("custo", customerService.getAllCustomer());
-        model.addAttribute("drone", droneShotService.getAllShot());
+        fetchMap(model);
         return "AddBooking";
     }
 
@@ -54,6 +52,7 @@ public class MainController {
     @GetMapping("/getUpdateBookingPage")
     public String getUpdateBookingPage(@RequestParam Integer bookingId, Model model) {
         model.addAttribute("booking", bookingService.getBooking(bookingId));
+        fetchMap(model);
         return "UpdateBookingPage";
     }
 
@@ -100,5 +99,11 @@ public class MainController {
     public String saveDroneShot(@ModelAttribute DroneShot droneShot) {
         droneShotService.saveDroneShot(droneShot);
         return "redirect:operator";
+    }
+
+    private void fetchMap(Model model) {
+        model.addAttribute("loc", locationService.getLocationIdAndAddrLine());
+        model.addAttribute("custo", customerService.getCustomerIdAndName());
+        model.addAttribute("drone", droneShotService.getShortIdAndName());
     }
 }

@@ -3,10 +3,12 @@ package com.droame.droameportal.services.impl;
 import com.droame.droameportal.models.Customer;
 import com.droame.droameportal.repositories.CustomerRepo;
 import com.droame.droameportal.services.ICustomerService;
+import com.droame.droameportal.utils.MyAppUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CustomerServiceImpl implements ICustomerService {
@@ -27,5 +29,11 @@ public class CustomerServiceImpl implements ICustomerService {
     @Override
     public List<Customer> getAllCustomer() {
         return repo.findAll();
+    }
+
+    @Override
+    public Map<Integer, String> getCustomerIdAndName() {
+        List<Object[]> list = repo.getCustomerIdAndName();
+        return MyAppUtility.convertListIntoMap(list);
     }
 }

@@ -42,8 +42,8 @@
                         <label for="customer">CUSTOMER</label>
                     </div>
                     <div class="col-6">
-                        <select class="form-control" id="customer" name="customer.id" th:field="*{customer}">
-                            <option th:each="ob:${custo}" th:text="ob.customerName" th:value="ob.customerId"></option>
+                        <select class="form-control" id="customer" name="customer" th:field="*{customer}">
+                            <option th:each="ob:${custo}" th:text="${ob.value}" th:value="${ob.key}"></option>
                         </select>
                     </div>
                 </div>
@@ -53,8 +53,8 @@
                         <label for="loc">LOCATION</label>
                     </div>
                     <div class="col-6">
-                        <select class="form-control" id="loc" name="location.id" th:field="*{location}">
-                            <option th:each="ob:${loc}" th:text="ob.addrId" th:value="ob.addrLine"></option>
+                        <select class="form-control" id="loc" name="location" th:field="*{location}">
+                            <option th:each="ob:${loc}" th:text="${ob.value}" th:value="${ob.key}"></option>
                         </select>
                     </div>
                 </div>
@@ -64,8 +64,8 @@
                         <label for="drone">DRONE SHOT</label>
                     </div>
                     <div class="col-6">
-                        <select class="form-control" id="drone" name="droneShot.id" th:field="*{droneShot}">
-                            <option th:each="ob:${drone}" th:text="ob.shotId" th:value="ob.shotId"></option>
+                        <select class="form-control" id="drone" name="droneShot" th:field="*{droneShot}">
+                            <option th:each="ob:${drone}" th:text="${ob.value}" th:value="${ob.key}"></option>
                         </select>
                     </div>
                 </div>

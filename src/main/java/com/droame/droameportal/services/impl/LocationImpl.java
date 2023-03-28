@@ -3,10 +3,12 @@ package com.droame.droameportal.services.impl;
 import com.droame.droameportal.models.Location;
 import com.droame.droameportal.repositories.LocationRepo;
 import com.droame.droameportal.services.ILocationService;
+import com.droame.droameportal.utils.MyAppUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class LocationImpl implements ILocationService {
@@ -27,5 +29,11 @@ public class LocationImpl implements ILocationService {
     @Override
     public List<Location> getAllLoc() {
         return repo.findAll();
+    }
+
+    @Override
+    public Map<Integer, String> getLocationIdAndAddrLine() {
+        List<Object[]> list = repo.getLocationIdAndAddrLine();
+        return MyAppUtility.convertListIntoMap(list);
     }
 }

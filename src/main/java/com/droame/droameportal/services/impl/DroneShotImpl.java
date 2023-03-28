@@ -3,10 +3,12 @@ package com.droame.droameportal.services.impl;
 import com.droame.droameportal.models.DroneShot;
 import com.droame.droameportal.repositories.DroneShotRepo;
 import com.droame.droameportal.services.IDroneShotService;
+import com.droame.droameportal.utils.MyAppUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DroneShotImpl implements IDroneShotService {
@@ -27,5 +29,11 @@ public class DroneShotImpl implements IDroneShotService {
     @Override
     public List<DroneShot> getAllShot() {
         return repo.findAll();
+    }
+
+    @Override
+    public Map<Integer, String> getShortIdAndName() {
+        List<Object[]> list = repo.getShortIdAndName();
+        return MyAppUtility.convertListIntoMap(list);
     }
 }

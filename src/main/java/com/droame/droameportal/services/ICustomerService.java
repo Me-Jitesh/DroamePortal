@@ -4,6 +4,7 @@ import com.droame.droameportal.models.Booking;
 import com.droame.droameportal.models.Customer;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ICustomerService {
 
@@ -12,4 +13,6 @@ public interface ICustomerService {
     Customer getCustomer(Integer customerId);
 
     List<Customer> getAllCustomer();
+
+    Map<Integer, String> getCustomerIdAndName();
 }
