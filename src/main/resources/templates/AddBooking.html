@@ -16,52 +16,135 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 
-    <div class="card">
+    <div class="card text-center">
 
-        <div class="card-header bg-primary text-white text-center">
-            <h3>ADD BOOKING</h3>
+        <div class="card-header bg-dark text-white text-center">
+            <h1> BOOKING</h1>
         </div>
 
         <div class="card-body">
             <form method="post" th:action="@{/droam/saveBooking}">
-                <div class="row">
-                    <div class="col-6">
-                        <label for="customer">CUSTOMER</label>
-                    </div>
-                    <div class="col-6">
-                        <select class="form-control" id="customer" name="customer">
-                            <option th:each="ob:${custo}" th:text="${ob.value}" th:value="${ob.key}"></option>
-                        </select>
-                    </div>
-                </div>
-                <!--Row #1 end-->
-                <div class="row">
-                    <div class="col-6">
-                        <label for="loc">LOCATION</label>
-                    </div>
-                    <div class="col-6">
-                        <select class="form-control" id="loc" name="location">
-                            <option th:each="ob:${loc}" th:text="${ob.value}" th:value="${ob.key}"></option>
-                        </select>
-                    </div>
-                </div>
-                <!--Row #2-->
-                <div class="row">
-                    <div class="col-6">
-                        <label for="drone">DRONE SHOT</label>
-                    </div>
-                    <div class="col-6">
-                        <select class="form-control" id="drone" name="droneShot">
-                            <option th:each="ob:${drone}" th:text="${ob.value}" th:value="${ob.key}"></option>
-                        </select>
-                    </div>
-                </div>
-                <!--row #3 end-->
 
+                <hr/>
+                <h3> CUSTOMER</h3>
+                <hr/>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="customerName">CUSTOMER NAME</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" id="customerName" name="customer.customerName"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="customerEmail">CUSTOMER EMAIL</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="email" class="form-control" id="customerEmail" name="customer.customerEmail"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="customerPhone">CUSTOMER PHONE</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" id="customerPhone" name="customer.customerPhone"/>
+                    </div>
+                </div>
+
+                <hr/>
+                <h3> ADDRESS</h3>
+                <hr/>
+
+                <!--Row #1 end-->
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="addrLine">ADDRESS LINE</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" id="addrLine" name="location.addrLine"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="city">CITY</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" id="city" name="location.city"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="dist">DISTRICT</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" id="dist" name="location.dist"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="pin">PIN</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" id="pin" name="location.pin"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="state">STATE</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" id="state" name="location.state"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="country">COUNTRY</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" id="country" name="location.country"/>
+                    </div>
+                </div>
+
+                <hr/>
+                <h3> DRONE SHOT</h3>
+                <hr/>
+
+                <!--Row #2-->
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="droneShotName">DRONE SHOT NAME</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" id="droneShotName" name="droneShot.droneShotName"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <label for="droneShotPath">DRONE SHOT PATH</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" class="form-control" id="droneShotPath" name="droneShot.droneShotPath"/>
+                    </div>
+                </div>
+                <!--Row #3-->
+                <hr/>
                 <!-- Submit Button -->
-                <input class="btn btn-success" type="submit" value="ADD"/>
+                <input class="btn btn-success px-5" type="submit" value="ADD"/>
             </form>
         </div>
         <div class="card-footer text-center bg-success text-white" th:if="${message != null}">
