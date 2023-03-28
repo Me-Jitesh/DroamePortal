@@ -11,7 +11,8 @@ import java.util.Date;
 public class Booking {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "booking_sql")
+    @SequenceGenerator(name = "booking_sql")
     @Column(name = "booking_id")
     private Integer bookingId;
     @OneToOne(cascade = CascadeType.ALL)
