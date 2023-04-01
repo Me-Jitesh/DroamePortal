@@ -24,7 +24,7 @@
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-primary">ABOUT US</h5>
-                    <a href="https://www.droame.com/" class="btn btn-info">READ</a>
+                    <a href="https://www.droame.com/" class="btn btn-outline-info px-5">READ</a>
                 </div>
             </div>
         </div>
@@ -36,10 +36,17 @@
                      alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title text-primary">OPERATOR</h5>
-                    <a th:href="@{/droam/operator}" class="btn btn-info text-white">BOOKING</a>
+                    <form method="get" th:action="@{/droam/operator}">
+                        <input type="text" name="id" class="form-control"/>
+                        <button type="submit" class="btn btn-outline-success btn-sm m-2 px-5">LOGIN</button>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="card-footer text-center bg-danger text-white" th:if="${message != null}">
+        <span th:text="${message}"></span>
     </div>
 
 </div>

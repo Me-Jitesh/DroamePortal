@@ -1,13 +1,16 @@
 package com.droame.droameportal.controllers;
 
 import com.droame.droameportal.models.Booking;
+import com.droame.droameportal.models.Operator;
 import com.droame.droameportal.services.IBookingService;
+import com.droame.droameportal.services.IOperator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/droam")
@@ -16,15 +19,25 @@ public class MainController {
     @Autowired
     private IBookingService bookingService;
 
+    @Autowired
+    private IOperator service;
+
     @GetMapping("/home")
     public String getHomePage() {
         return "index";
     }
 
     @GetMapping("/operator")
-    public String getOperatorPortal(Model model) {
-        model.addAttribute("bookings", bookingService.getAllBooking());
-        return "BookingDashboard";
+    public String getOperatorPortal(@RequestParam Integer id, Model model) {
+        Optional<Operator> operator = service.getOperator(id);
+        if (operator.isPresent()) {
+            model.addAttribute("message", "Success");
+            model.addAttribute("bookings", bookingService.getAllBooking());
+            return "BookingDashboard";
+        } else {
+            model.addAttribute("message", "Failed");
+            return "index";
+        }
     }
 
     @GetMapping("/addBooking")
